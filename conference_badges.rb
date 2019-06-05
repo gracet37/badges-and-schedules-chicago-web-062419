@@ -1,23 +1,27 @@
 # Write your code here.
 
 def badge_maker(name)
- return "Hello, my name is #{name}."
+  "Hello, my name is #{name}."
 end
 
-def batch_badge_creator(name)
-i = 0 
-badges = []
-while i< name.length 
- badges.push("Hello, my name is #{name[i]}.")
- i += 1 
- end
- return badges
- end 
- 
- def assign_rooms(name)
-   name.each_with_index do |object,index|
-     indexone = index + 1 
-     puts "Hello #{object}! You'll be assigned to room #{indexone}!"
-   end
-  return assign_rooms
- end
+def batch_badge_creator(attendees)
+  attendees.map do |attendee|
+    "Hello, my name is #{attendee}."
+  end
+end
+
+def assign_rooms(attendees)
+  attendees.each_with_index.map do |attendee, index|
+    "Hello, #{attendee}! You'll be assigned to room #{index+1}!"
+  end
+end
+
+def printer(attendees)
+  batch_badge_creator(attendees).each do |badge|
+    puts badge
+  end
+
+  assign_rooms(attendees).each do |assignment|
+    puts assignment
+  end
+end
